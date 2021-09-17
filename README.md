@@ -20,7 +20,7 @@
 ## items テーブル
 |Column|Type|Options|
 |------|---|---|
-|user|references|foreign_key:true|
+|user|references|null:false,foreign_key:true|
 |name|string|null:false|
 |explain|text|null:false|
 |category_id|integer|null:false|
@@ -54,6 +54,7 @@
 |city|string|null:false|
 |building|string||
 |address_line|string|null:false|
+|area_id|integer|null:false|
 
 ### Association
 - belongs_to:order
