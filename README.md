@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :items
-- has_many :orders
+- has_many :buyers
 
 ## items テーブル
 |Column|Type|Options|
@@ -27,12 +27,12 @@
 |state_id|integer|null:false|
 |burden_id|integer|null:false|
 |area_id|integer|null:false|
-|delivery|integer|null:false|
+|delivery_id|integer|null:false|
 |price|integer|null:false|
 
 ### Association
 - belongs_to:user
-- has_one:order
+- has_one:buyer
 
 ## buyersテーブル
 |Column|Type|Options|
@@ -57,4 +57,4 @@
 |area_id|integer|null:false|
 
 ### Association
-- belongs_to:order
+- belongs_to:buyer
