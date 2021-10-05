@@ -62,3 +62,5 @@ end
 
 gem 'devise'
 gem 'rspec-rails', '~> 4.0.0'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
