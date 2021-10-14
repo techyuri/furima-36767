@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   # validates :password,
   #         format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は英字と数字の両方を含めて半角で入力してください', allow_blank: true }, length: { maximum: 12 }
-  # ASSOCIATION
-  # has_many :items
-  # has_many :buyers
+  
+   has_many :items
+   has_many :buyers
 end
