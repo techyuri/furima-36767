@@ -59,12 +59,15 @@ RSpec.describe ItemForm, type: :model do
         expect(@item_form.errors.full_messages).to include("Phone number is invalid")
       end
       it "phone_numberが11桁を超えると購入できない" do
-        @item_form.phone_number = "08012345678"
+        @item_form.phone_number = "080123456789"
         @item_form.valid?
         expect(@item_form.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
-   end
- end 
-
-end
-
+      end
+      it 'tokenが空だと購入できない' do
+        @item_form.token = ''
+        @item_form.valid?
+        expect(@item_form.errors.full_messages).to include("Token can't be blank")
+      end
+  end 
+ end
 end
