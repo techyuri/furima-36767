@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def create 
+  def create
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path(@item)
@@ -42,9 +42,9 @@ class ItemsController < ApplicationController
 
   def destroy
     redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
-    
+
     redirect_to root_path if @item.destroy
-      end
+  end
 
   private
 

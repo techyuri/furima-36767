@@ -13,8 +13,9 @@ class User < ApplicationRecord
     validates :birthday
   end
 
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は英字と数字の両方を含めて半角で入力してください', allow_blank: true }, length: { maximum: 12 }
-  
-   has_many :items, dependent: :destroy
-   has_many :buyers, dependent: :destroy
+  validates :password,
+            format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は英字と数字の両方を含めて半角で入力してください', allow_blank: true }, length: { maximum: 12 }
+
+  has_many :items, dependent: :destroy
+  has_many :buyers, dependent: :destroy
 end

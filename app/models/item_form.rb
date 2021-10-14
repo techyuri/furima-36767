@@ -14,6 +14,7 @@ class ItemForm
 
   def save
     buyer = Buyer.create(user_id: user_id, item_id: item_id)
-    Address.create(area_id: area_id, city: city, address_line: address_line, building: building, phone_number: phone_number, postal_code: postal_code, buyer_id: buyer.id)
+    Address.create(area_id: area_id, city: city, address_line: address_line, building: building, phone_number: phone_number,
+                   postal_code: postal_code, buyer_id: buyer.id)
   end
 end
