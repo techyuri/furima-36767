@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ItemForm, type: :model do
-  describe '商品の購入' do
     before do
-      @item_form = FactoryBot.build(:item_form)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @item_form = FactoryBot.build(:item_form, user_id: @user.id, item_id: @item.id)
+      sleep 1
     end
+    describe '商品の購入' do
     context '商品購入がうまくいく時' do
       it '全ての情報が正しく入力された時に購入できる' do
         expect(@item_form).to be_valid
@@ -61,6 +64,11 @@ RSpec.describe ItemForm, type: :model do
         @item_form.phone_number = '080123456789'
         @item_form.valid?
         expect(@item_form.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+      end
+      it 'phone_numberが9桁以下だと購入できない' do
+        @item_form.phone_number = '080123456'
+        @item_form.valid?
+        expect(@item_form.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
       end
       it 'tokenが空だと購入できない' do
         @item_form.token = ''

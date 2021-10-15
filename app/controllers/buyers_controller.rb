@@ -1,6 +1,6 @@
 class BuyersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_item_form, only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :set_item_form
 
   def index
     if current_user.id == @item.user_id
@@ -24,7 +24,7 @@ class BuyersController < ApplicationController
 
   private
 
-  def item_form_params
+  def buyer_params
     params.require(:item_form).permit(:area_id, :city, :address_line, :building, :phone_number, :postal_code).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
     )

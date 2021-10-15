@@ -22,13 +22,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless user_signed_in? && current_user.id == @item.user_id
+    unless current_user.id == @item.user_id
       redirect_to action: :index
       return
     end
     unless @item.buyer.nil?
       redirect_to action: :index
-      nil
     end
   end
 
@@ -41,7 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
+    redirect_to root_path unless current_user.id == @item.user_id
 
     redirect_to root_path if @item.destroy
   end
