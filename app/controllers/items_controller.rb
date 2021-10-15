@@ -22,7 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to action: :index unless current_user.id == @item.user_id
+    unless current_user.id == @item.user_id
+      redirect_to action: :index
+      return
+    end
+    redirect_to action: :index unless @item.buyer.nil?
   end
 
   def update
@@ -34,15 +38,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-        unless 
-          current_user.id == @item.user_id
-          redirect_to root_path
-        end
-    
-        if @item.destroy
-        redirect_to root_path 
-        end
-      end
+    redirect_to root_path unless current_user.id == @item.user_id
+
+    redirect_to root_path if @item.destroy
+  end
 
   private
 
