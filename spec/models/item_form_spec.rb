@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ItemForm, type: :model do
-    before do
-      @user = FactoryBot.create(:user)
-      @item = FactoryBot.create(:item)
-      @item_form = FactoryBot.build(:item_form, user_id: @user.id, item_id: @item.id)
-      sleep 1
-    end
-    describe '商品の購入' do
+  before do
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @item_form = FactoryBot.build(:item_form, user_id: @user.id, item_id: @item.id)
+    sleep 1
+  end
+  describe '商品の購入' do
     context '商品購入がうまくいく時' do
       it '全ての情報が正しく入力された時に購入できる' do
         expect(@item_form).to be_valid
@@ -75,12 +75,12 @@ RSpec.describe ItemForm, type: :model do
         @item_form.valid?
         expect(@item_form.errors.full_messages).to include("Token can't be blank")
       end
-      it "user_idが空では購入できない" do
+      it 'user_idが空では購入できない' do
         @item_form.user_id = ''
         @item_form.valid?
         expect(@item_form.errors.full_messages).to include("User can't be blank")
       end
-      it "item_idが空では購入できない" do
+      it 'item_idが空では購入できない' do
         @item_form.item_id = ''
         @item_form.valid?
         expect(@item_form.errors.full_messages).to include("Item can't be blank")

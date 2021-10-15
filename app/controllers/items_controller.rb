@@ -26,9 +26,7 @@ class ItemsController < ApplicationController
       redirect_to action: :index
       return
     end
-    unless @item.buyer.nil?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @item.buyer.nil?
   end
 
   def update
